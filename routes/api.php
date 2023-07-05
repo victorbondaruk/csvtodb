@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::controller(MedicineController::class)->group(function () {
+    Route::get('/medicine','index')->name('api.medicine.index');
+    Route::post('/medicine/import','import')->name('api.medicine.import');
+    Route::delete('/medicine/{id}','delete')->name('api.medicine.delete');
 });
